@@ -130,7 +130,7 @@ module.exports = class extends Generator {
                     if (error) {
                         done(error);
                     } else {
-                        done;
+                        done();
                     }
                 }
             );
@@ -140,14 +140,11 @@ module.exports = class extends Generator {
 
     writePkg() {
         const folder = this.userOptions.name;
-        const templatePkg = require(path.resolve(
-            process.cwd(),
-            folder,
-            'package.json'
-        ));
+        const pkgPath = path.resolve(process.cwd(), folder, 'package.json');
+        const templatePkg = require(pkgPath);
         const json = Object.assign(templatePkg, this.userOptions);
         fs.writeFileSync(
-            path.resolve(process.cwd(), folder + '/package.json'),
+            pkgPath,
             prettier.format(JSON.stringify(json), prettierConfig)
         );
     }
