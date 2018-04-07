@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator');
 const pkg = require('../package.json');
+const ora = require('ora');
 const chalk = require('chalk');
 const prompt = require('prompt');
 const fs = require('fs');
@@ -9,6 +10,7 @@ const prettier = require('prettier');
 // const { getInstalledPathSync } = require("get-installed-path");
 const unzip = require('unzip');
 const mv = require('mv');
+const { exec } = require('child_process');
 
 const prettierConfig = {
     tabWidth: 4,
@@ -26,7 +28,9 @@ module.exports = class extends Generator {
         this.option('babel'); // This method adds support for a `--babel` flag
 
         // user options
-        this.userOptions = {};
+        this.userOptions = {
+            yarn: true
+        };
         this.hasError = false;
     }
 
@@ -78,6 +82,12 @@ module.exports = class extends Generator {
                         type: 'string',
                         default: 'MIT',
                         required: false
+                    },
+                    yarn: {
+                        description: chalk.white.bold('use yarn'),
+                        type: 'boolean',
+                        default: true,
+                        required: false
                     }
                 }
             },
@@ -112,6 +122,9 @@ module.exports = class extends Generator {
     }
 
     unzipFiles() {
+        const spinner = ora();
+        spinner.start();
+        spinner.text = chalk.white('Unarchive project files...');
         const done = this.async();
         const folder = this.userOptions.name;
         const appPath = path.resolve(process.cwd(), folder);
@@ -127,7 +140,9 @@ module.exports = class extends Generator {
                 appPath,
                 { mkdirp: true },
                 function(error) {
+                    spinner.stop();
                     if (error) {
+                        this.hasError = true;
                         done(error);
                     } else {
                         done();
@@ -135,7 +150,13 @@ module.exports = class extends Generator {
                 }
             );
         });
-        unzipStream.on('error', done);
+        unzipStream.on('error', error => {
+            spinner.stop();
+            if (error) {
+                this.hasError = true;
+            }
+            done(error);
+        });
     }
 
     writePkg() {
@@ -146,6 +167,26 @@ module.exports = class extends Generator {
         fs.writeFileSync(
             pkgPath,
             prettier.format(JSON.stringify(json), prettierConfig)
+        );
+    }
+
+    yarn() {
+        const spinner = ora();
+        spinner.start();
+        spinner.text = chalk.white('Install packages...');
+        const done = this.async();
+        const { yarn, name } = this.userOptions;
+        exec(
+            yarn ? `cd ${name} && yarn` : `cd ${name} && npm install`,
+            error => {
+                spinner.stop();
+                if (error) {
+                    this.hasError = true;
+                    done(error);
+                } else {
+                    done();
+                }
+            }
         );
     }
 
