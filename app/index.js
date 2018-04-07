@@ -111,7 +111,8 @@ module.exports = class extends Generator {
         mkdir.sync(folder);
     }
 
-    async unzipFiles() {
+    unzipFiles() {
+        const done = this.async();
         const folder = this.userOptions.name;
         const appPath = path.resolve(process.cwd(), folder);
         const unzipStream = unzip.Extract({
@@ -120,28 +121,21 @@ module.exports = class extends Generator {
         fs
             .createReadStream(path.resolve(__dirname, './_archive.zip'))
             .pipe(unzipStream);
-        let result = await new Promise(resolve => {
-            unzipStream.on('end', resolve(true));
-            unzipStream.on('error', resolve(false));
-        });
-        if (!result) {
-            return result;
-        }
-        result = await new Promise(resolve => {
+        unzipStream.on('close', () => {
             mv(
                 path.resolve(process.cwd(), '_archive'),
                 appPath,
                 { mkdirp: true },
                 function(error) {
                     if (error) {
-                        resolve(false);
+                        done(error);
                     } else {
-                        resolve(true);
+                        done;
                     }
                 }
             );
         });
-        return result;
+        unzipStream.on('error', done);
     }
 
     writePkg() {
