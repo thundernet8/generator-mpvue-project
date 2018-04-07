@@ -1,6 +1,6 @@
 {
     "name": "generator-mpvue-project",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Yeoman generator of mpvue project",
     "main": "index.js",
     "repository": "git@github.com:thundernet8/generator-mpvue-project.git",
@@ -13,9 +13,7 @@
         "webpack",
         "boilerplate"
     ],
-    "files": [
-        "app"
-    ],
+    "files": ["app"],
     "scripts": {
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
         "lint-staged": "lint-staged",
@@ -23,21 +21,15 @@
         "lint-staged:format": "prettier --write",
         "lint": "eslint --ext .js app/index.js"
     },
-    "pre-commit": [
-        "precommit-msg",
-        "lint-staged"
-    ],
+    "pre-commit": ["precommit-msg", "lint-staged"],
     "lint-staged": {
-        "app/index.js": [
-            "lint-staged:format",
-            "lint-staged:script",
-            "git add"
-        ]
+        "app/index.js": ["lint-staged:format", "lint-staged:script", "git add"]
     },
     "dependencies": {
         "chalk": "^2.3.1",
         "get-installed-path": "^4.0.8",
         "mkdirp": "^0.5.1",
+        "mv": "^2.1.1",
         "prettier": "^1.10.2",
         "prompt": "^1.0.0",
         "unzip": "^0.1.11",

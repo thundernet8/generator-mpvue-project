@@ -8,6 +8,7 @@ const mkdir = require('mkdirp');
 const prettier = require('prettier');
 // const { getInstalledPathSync } = require("get-installed-path");
 const unzip = require('unzip');
+const mv = require('mv');
 
 const prettierConfig = {
     tabWidth: 4,
@@ -110,11 +111,37 @@ module.exports = class extends Generator {
         mkdir.sync(folder);
     }
 
-    unzipFiles() {
+    async unzipFiles() {
         const folder = this.userOptions.name;
+        const appPath = path.resolve(process.cwd(), folder);
+        const unzipStream = unzip.Extract({
+            path: path.resolve(process.cwd(), './')
+        });
         fs
-            .createReadStream('./archive.zip')
-            .pipe(unzip.Extract({ path: path.resolve(process.cwd(), folder) }));
+            .createReadStream(path.resolve(__dirname, './_archive.zip'))
+            .pipe(unzipStream);
+        let result = await new Promise(resolve => {
+            unzipStream.on('end', resolve(true));
+            unzipStream.on('error', resolve(false));
+        });
+        if (!result) {
+            return result;
+        }
+        result = await new Promise(resolve => {
+            mv(
+                path.resolve(process.cwd(), '_archive'),
+                appPath,
+                { mkdirp: true },
+                function(error) {
+                    if (error) {
+                        resolve(false);
+                    } else {
+                        resolve(true);
+                    }
+                }
+            );
+        });
+        return result;
     }
 
     writePkg() {
@@ -122,7 +149,7 @@ module.exports = class extends Generator {
         const templatePkg = require(path.resolve(
             process.cwd(),
             folder,
-            './archive/package.json'
+            'package.json'
         ));
         const json = Object.assign(templatePkg, this.userOptions);
         fs.writeFileSync(
