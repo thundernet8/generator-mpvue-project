@@ -29,7 +29,7 @@ module.exports = class extends Generator {
 
         // user options
         this.userOptions = {
-            yarn: true
+            yarn: 'Y'
         };
         this.hasError = false;
     }
@@ -84,9 +84,9 @@ module.exports = class extends Generator {
                         required: false
                     },
                     yarn: {
-                        description: chalk.white.bold('use yarn'),
-                        type: 'boolean',
-                        default: true,
+                        description: chalk.white.bold('use yarn(Y/n)'),
+                        type: 'string',
+                        default: 'Y',
                         required: false
                     }
                 }
@@ -177,7 +177,9 @@ module.exports = class extends Generator {
         const done = this.async();
         const { yarn, name } = this.userOptions;
         exec(
-            yarn ? `cd ${name} && yarn` : `cd ${name} && npm install`,
+            yarn.toLowerCase() === 'y'
+                ? `cd ${name} && yarn`
+                : `cd ${name} && npm install`,
             error => {
                 spinner.stop();
                 if (error) {
