@@ -9,16 +9,22 @@
         "lint:js": "eslint --fix --ext .js,.vue src",
         "lint-staged:js": "eslint --fix -c .eslintrc.js",
         "lint-staged:format": "prettier --write",
-        "format": "prettier --write --tab-width 4 --single-quote true --stdin-filepath src/**/*.{less,vue,js}",
+        "format":
+            "prettier --write --tab-width 4 --single-quote true --stdin-filepath src/**/*.{less,vue,js}",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-        "dll": "cross-env NODE_ENV=production webpack -p --hide-modules --config build/webpack.dll.conf.js",
-        "dll:dev": "cross-env NODE_ENV=development webpack --hide-modules --config build/webpack.dll.conf.js",
-        "dll:report": "cross-env npm_config_report=true NODE_ENV=production webpack --hide-modules --config build/webpack.dll.conf.js",
+        "dll":
+            "cross-env NODE_ENV=production webpack -p --hide-modules --config build/webpack.dll.conf.js",
+        "dll:dev":
+            "cross-env NODE_ENV=development webpack --hide-modules --config build/webpack.dll.conf.js",
+        "dll:report":
+            "cross-env npm_config_report=true NODE_ENV=production webpack --hide-modules --config build/webpack.dll.conf.js",
         "dev": "npm run dll:dev && node build/dev-server.js",
-        "dev:mock": "npm run dll:dev && cross-env MOCK=true node build/dev-server.js",
+        "dev:mock":
+            "npm run dll:dev && cross-env MOCK=true node build/dev-server.js",
         "start": "npm run dll:dev && node build/dev-server.js",
         "build": " rimraf dist && npm run dll && node build/build.js",
-        "build:report": "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js"
+        "build:report":
+            "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js"
     },
     "dependencies": {
         "common-mpvue": "^0.0.5",
@@ -28,7 +34,7 @@
         "mpvue": "^1.0.7",
         "querystring": "^0.2.0",
         "url-parse": "^1.2.0",
-        "vuex": "^2.5.0"
+        "vuex": "^3.0.1"
     },
     "devDependencies": {
         "autoprefixer": "^7.1.2",
@@ -97,13 +103,6 @@
         "node": ">= 4.0.0",
         "npm": ">= 3.0.0"
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
-    ],
-    "pre-commit": [
-        "precommit-msg",
-        "lint-staged"
-    ]
+    "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
+    "pre-commit": ["precommit-msg", "lint-staged"]
 }
