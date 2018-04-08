@@ -1,0 +1,5 @@
+screenshot/
+build/
+.eslintrc
+.prettierrc
+yarn.lock
