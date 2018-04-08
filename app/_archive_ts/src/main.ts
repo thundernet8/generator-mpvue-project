@@ -7,7 +7,9 @@ import appProps from './common/app';
 const pkg = require('../package.json');
 
 // 设置wx debug模式
-wx.setEnableDebug({ enableDebug: process.env.NODE_ENV !== 'production' });
+if (process.env.NODE_ENV !== 'production') {
+    wx.setEnableDebug({ enableDebug: true });
+}
 
 Vue.config.productionTip = false;
 wrap(
