@@ -26,7 +26,19 @@ function zipFile(fileName) {
             error
         ) {
             if (error) {
-                console.log(error.message);
+                reject(error);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+// git add 文件
+function gitAdd() {
+    return new Promise((resolve, reject) => {
+        exec('git add -A', function(error) {
+            if (error) {
                 reject(error);
             } else {
                 resolve();
@@ -42,6 +54,7 @@ spinner.text = chalk.white('Building...');
 (async function() {
     await Promise.all([removeFile('_archive'), removeFile('_archive_ts')])
         .then(() => Promise.all([zipFile('_archive'), zipFile('_archive_ts')]))
+        .then(() => gitAdd())
         .then(() => {
             spinner.stop();
             console.log(chalk.green('Build successfully'));
