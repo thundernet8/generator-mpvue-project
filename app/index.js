@@ -203,7 +203,7 @@ module.exports = class extends Generator {
             appid
         });
         fs.writeFileSync(
-            templatePkg,
+            projPath,
             prettier.format(JSON.stringify(json), prettierConfig)
         );
     }
