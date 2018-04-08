@@ -5,31 +5,27 @@
     "private": true,
     "scripts": {
         "lint-staged": "lint-staged -c .lintstagedrc.js",
-        "lint": "npm run lint:js",
+        "lint": "npm run lint:js && npm run lint:ts",
         "lint:js": "eslint --fix --ext .js,.vue src",
+        "lint:ts": "tslint -e node_modules --fix -c .tslintrc.json src/**/*.ts",
         "lint-staged:js": "eslint --fix -c .eslintrc.js",
+        "lint-staged:ts": "tslint --fix -c .tslintrc.json",
         "lint-staged:format": "prettier --write",
-        "format":
-            "prettier --write --tab-width 4 --single-quote true --stdin-filepath src/**/*.{less,vue,js}",
+        "format": "prettier --write --tab-width 4 --single-quote true --stdin-filepath src/**/*.{less,vue,js}",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-        "dll":
-            "cross-env NODE_ENV=production webpack -p --hide-modules --config build/webpack.dll.conf.js",
-        "dll:dev":
-            "cross-env NODE_ENV=development webpack --hide-modules --config build/webpack.dll.conf.js",
-        "dll:report":
-            "cross-env npm_config_report=true NODE_ENV=production webpack --hide-modules --config build/webpack.dll.conf.js",
+        "dll": "cross-env NODE_ENV=production webpack -p --hide-modules --config build/webpack.dll.conf.js",
+        "dll:dev": "cross-env NODE_ENV=development webpack --hide-modules --config build/webpack.dll.conf.js",
+        "dll:report": "cross-env npm_config_report=true NODE_ENV=production webpack --hide-modules --config build/webpack.dll.conf.js",
         "dev": "npm run dll:dev && node build/dev-server.js",
-        "dev:mock":
-            "npm run dll:dev && cross-env MOCK=true node build/dev-server.js",
+        "dev:mock": "npm run dll:dev && cross-env MOCK=true node build/dev-server.js",
         "start": "npm run dll:dev && node build/dev-server.js",
         "build": " rimraf dist && npm run dll && node build/build.js",
-        "build:sub":
-            "rimraf dist && npm run dll && cross-env PKG_TYPE=subpackage node build/build.js",
-        "build:report":
-            "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js"
+        "build:sub": "rimraf dist && npm run dll && cross-env PKG_TYPE=subpackage node build/build.js",
+        "build:report": "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js"
     },
     "dependencies": {
-        "common-mpvue": "^0.0.2",
+        "@types/node": "^9.6.2",
+        "common-mpvue": "^0.0.5",
         "date-fns": "^1.29.0",
         "left-pad": "^1.2.0",
         "md5": "^2.2.1",
@@ -91,8 +87,13 @@
         "shelljs": "^0.7.6",
         "string-replace-webpack-plugin": "^0.1.3",
         "stylelint": "^9.1.3",
+        "ts-loader": "^3.5.0",
+        "tslint": "^5.9.1",
+        "tslint-eslint-rules": "^5.1.0",
+        "typescript": "^2.8.1",
         "uglifyjs-webpack-plugin": "^1.2.4",
         "url-loader": "^0.5.8",
+        "vue": "^2.5.16",
         "vue-style-loader": "^3.0.1",
         "webpack": "^2.6.1",
         "webpack-bundle-analyzer": "^2.2.1",
@@ -105,6 +106,13 @@
         "node": ">= 4.0.0",
         "npm": ">= 3.0.0"
     },
-    "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
-    "pre-commit": ["precommit-msg", "lint-staged"]
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "pre-commit": [
+        "precommit-msg",
+        "lint-staged"
+    ]
 }

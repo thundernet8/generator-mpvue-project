@@ -22,8 +22,8 @@ function getEntry(dir, entryFile) {
     }, {});
 }
 
-const appEntry = { app: resolve('./src/main.js') };
-const pagesEntry = getEntry(resolve('./src/pages'), 'main.js');
+const appEntry = { app: resolve('./src/main.ts') };
+const pagesEntry = getEntry(resolve('./src/pages'), 'main.ts');
 const entry = Object.assign({}, appEntry, pagesEntry);
 
 // const replaceStrLoader = StringReplacePlugin.replace({
@@ -77,6 +77,11 @@ module.exports = {
             // },
             {
                 test: /\.ts$/,
+                include: [
+                    resolve('src'),
+                    resolve('test'),
+                    resolve('node_modules/common-mpvue')
+                ],
                 use: [
                     {
                         loader: 'babel-loader'
@@ -96,8 +101,7 @@ module.exports = {
                             appendTsSuffixTo: [/\.vue$/]
                         }
                     }
-                ],
-                exclude: /node_modules/
+                ]
             },
             {
                 test: /\.vue$/,

@@ -29,7 +29,8 @@ module.exports = class extends Generator {
 
         // user options
         this.userOptions = {
-            yarn: 'Y'
+            yarn: 'Y',
+            ts: 'Y'
         };
         this.hasError = false;
     }
@@ -83,6 +84,12 @@ module.exports = class extends Generator {
                         default: 'MIT',
                         required: false
                     },
+                    ts: {
+                        description: chalk.white.bold('use typescript(Y/n)'),
+                        type: 'string',
+                        default: 'Y',
+                        required: false
+                    },
                     yarn: {
                         description: chalk.white.bold('use yarn(Y/n)'),
                         type: 'string',
@@ -127,16 +134,22 @@ module.exports = class extends Generator {
         spinner.text = chalk.white('Unarchive project files...');
         const done = this.async();
         const folder = this.userOptions.name;
+        const useTs = this.userOptions.ts.toLowerCase() === 'y';
         const appPath = path.resolve(process.cwd(), folder);
         const unzipStream = unzip.Extract({
             path: path.resolve(process.cwd(), './')
         });
         fs
-            .createReadStream(path.resolve(__dirname, './_archive.zip'))
+            .createReadStream(
+                path.resolve(
+                    __dirname,
+                    useTs ? '_archive_ts.zip' : './_archive.zip'
+                )
+            )
             .pipe(unzipStream);
         unzipStream.on('close', () => {
             mv(
-                path.resolve(process.cwd(), '_archive'),
+                path.resolve(process.cwd(), useTs ? '_archive_ts' : '_archive'),
                 appPath,
                 { mkdirp: true },
                 function(error) {
