@@ -87,7 +87,7 @@ module.exports = {
                         loader: 'babel-loader'
                     },
                     {
-                        loader: 'mpvue-loader',
+                        loader: 'mpvue-ts-loader',
                         options: {
                             checkMPEntry: true
                         }
@@ -107,7 +107,7 @@ module.exports = {
                 test: /\.vue$/,
                 use: [
                     {
-                        loader: 'mpvue-loader',
+                        loader: 'mpvue-ts-loader',
                         options: vueLoaderConfig
                     }
                     // {

@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             url: '',
-            utm_source: getApp().name,
+            utm_source: '',
             shouldCheckParams: false,
             canIUsewebView: wx.canIUse('web-view') || false
         };
@@ -40,6 +40,7 @@ export default {
             } else {
                 const app = getApp();
                 this.url = url;
+                this.utm_source = app.name;
                 const query = Object.assign({}, app.utils.parseUrlQuery(url), {
                     ...this.$root.$mp.query
                 });

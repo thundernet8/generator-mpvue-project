@@ -9,7 +9,7 @@ const DOMAIN_MAP = {
 export default {
     VERSION: '1.0.0',
     APP_NAME: 'sample-mpvue-wxapp',
-    MOCK: process.env.MOCK!.toString() === "true",
+    MOCK: process.env.MOCK && process.env.MOCK.toString() === 'true',
     DEBUG: process.env.NODE_ENV !== 'production',
     DOMAIN:
         DOMAIN_MAP[process.env.NODE_ENV || 'production'] ||
