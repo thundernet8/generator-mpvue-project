@@ -191,7 +191,7 @@ module.exports = class extends Generator {
     }
 
     writeProj() {
-        const { name, appid } = this.userOptions.name;
+        const { name, appid } = this.userOptions;
         const projPath = path.resolve(
             process.cwd(),
             name,
