@@ -18,6 +18,7 @@ module.exports = {
         dll: [
             'mpvue',
             'vuex',
+            'common-mpvue',
             'querystring',
             'url-parse',
             'md5',
