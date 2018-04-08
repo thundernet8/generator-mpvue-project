@@ -23,13 +23,11 @@
             "npm run dll:dev && cross-env MOCK=true node build/dev-server.js",
         "start": "npm run dll:dev && node build/dev-server.js",
         "build": " rimraf dist && npm run dll && node build/build.js",
-        "build:sub":
-            "rimraf dist && npm run dll && cross-env PKG_TYPE=subpackage node build/build.js",
         "build:report":
             "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js"
     },
     "dependencies": {
-        "common-mpvue": "^0.0.2",
+        "common-mpvue": "^0.0.5",
         "date-fns": "^1.29.0",
         "left-pad": "^1.2.0",
         "md5": "^2.2.1",
