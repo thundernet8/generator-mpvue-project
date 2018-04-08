@@ -30,7 +30,8 @@ module.exports = class extends Generator {
         // user options
         this.userOptions = {
             yarn: 'Y',
-            ts: 'Y'
+            ts: 'Y',
+            appid: ''
         };
         this.hasError = false;
     }
@@ -94,6 +95,12 @@ module.exports = class extends Generator {
                         description: chalk.white.bold('use yarn(Y/n)'),
                         type: 'string',
                         default: 'Y',
+                        required: false
+                    },
+                    appid: {
+                        description: chalk.white.bold('miniprogram appid'),
+                        type: 'string',
+                        default: '',
                         required: false
                     }
                 }
@@ -179,6 +186,24 @@ module.exports = class extends Generator {
         const json = Object.assign(templatePkg, this.userOptions);
         fs.writeFileSync(
             pkgPath,
+            prettier.format(JSON.stringify(json), prettierConfig)
+        );
+    }
+
+    writeProj() {
+        const { name, appid } = this.userOptions.name;
+        const projPath = path.resolve(
+            process.cwd(),
+            name,
+            'project.config.json'
+        );
+        const templatePkg = require(projPath);
+        const json = Object.assign(templatePkg, {
+            projectname: name,
+            appid
+        });
+        fs.writeFileSync(
+            templatePkg,
             prettier.format(JSON.stringify(json), prettierConfig)
         );
     }

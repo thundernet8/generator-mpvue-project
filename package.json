@@ -13,29 +13,22 @@
         "webpack",
         "boilerplate"
     ],
-    "files": [
-        "app"
-    ],
+    "files": ["app"],
     "scripts": {
+        "build": "node build/build.js",
+        "prepublishOnly": "npm run build",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
         "lint-staged": "lint-staged",
         "lint-staged:script": "eslint --fix -c .eslintrc",
         "lint-staged:format": "prettier --write",
         "lint": "eslint --ext .js app/index.js"
     },
-    "pre-commit": [
-        "precommit-msg",
-        "lint-staged"
-    ],
+    "pre-commit": ["precommit-msg", "lint-staged"],
     "lint-staged": {
-        "app/index.js": [
-            "lint-staged:format",
-            "lint-staged:script",
-            "git add"
-        ]
+        "app/index.js": ["lint-staged:format", "lint-staged:script", "git add"]
     },
     "dependencies": {
-        "chalk": "^2.3.1",
+        "chalk": "^2.3.2",
         "get-installed-path": "^4.0.8",
         "mkdirp": "^0.5.1",
         "mv": "^2.1.1",

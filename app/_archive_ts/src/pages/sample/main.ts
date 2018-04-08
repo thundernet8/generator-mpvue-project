@@ -1,4 +1,4 @@
-import Page from './index';
+import Page from './index.vue';
 import { WrapPage } from 'common-mpvue';
 
 new WrapPage(Page);
