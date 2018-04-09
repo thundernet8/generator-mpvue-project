@@ -27,7 +27,7 @@
             "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js"
     },
     "dependencies": {
-        "common-mpvue": "^0.0.5",
+        "common-mpvue": "^0.2.0",
         "date-fns": "^1.29.0",
         "left-pad": "^1.2.0",
         "md5": "^2.2.1",
