@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "@types/node": "^9.6.2",
-        "common-mpvue": "^0.2.0",
+        "common-mpvue": "^0.2.4",
         "date-fns": "^1.29.0",
         "left-pad": "^1.2.0",
         "md5": "^2.2.1",

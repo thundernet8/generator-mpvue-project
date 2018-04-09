@@ -17,3 +17,7 @@ npm run dev:mock
 ```js
 npm run build
 ```
+
+## common-mpvue
+
+[common-mpvue](https://github.com/thundernet8/common-mpvue)
