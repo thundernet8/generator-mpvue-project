@@ -37,14 +37,22 @@ module.exports = class extends Generator {
     }
 
     checkUpdate() {
-        const update = require('update-check')(pkg);
+        const check = require('update-check')(pkg);
+        const done = this.async();
 
-        if (update) {
-            const text = `The latest version is ${
-                update.latest
-            }. Please update!`;
-            console.log(chalk.bold.cyan(text));
-        }
+        check
+            .then(update => {
+                if (update) {
+                    const text = `The latest version is ${
+                        update.latest
+                    }. Please update!\n`;
+                    console.log(chalk.bold.red(text));
+                }
+                done();
+            })
+            .catch(() => {
+                done();
+            });
     }
 
     info() {
