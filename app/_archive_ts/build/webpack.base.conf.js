@@ -125,7 +125,7 @@ module.exports = {
                 use: [
                     'babel-loader',
                     {
-                        loader: 'mpvue-loader',
+                        loader: 'mpvue-ts-loader',
                         options: {
                             checkMPEntry: true
                         }
@@ -176,6 +176,14 @@ module.exports = {
                 from: path.resolve(__dirname, '../project.config.json'),
                 to: path.resolve(__dirname, '../dist')
             }
-        ])
+        ]),
+        new webpack.LoaderOptionsPlugin({
+            test: /\.(vue|ts)$/,
+            options: {
+                ts: {
+                    appendTsSuffixTo: [/\.vue$/]
+                }
+            }
+        })
     ]
 };
