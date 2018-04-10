@@ -36,6 +36,17 @@ module.exports = class extends Generator {
         this.hasError = false;
     }
 
+    checkUpdate() {
+        const update = require('update-check')(pkg);
+
+        if (update) {
+            const text = `The latest version is ${
+                update.latest
+            }. Please update!`;
+            console.log(chalk.bold.cyan(text));
+        }
+    }
+
     info() {
         console.log(chalk.cyan.bold(` ${pkg.name} v${pkg.version}`));
     }
