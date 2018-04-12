@@ -38,7 +38,7 @@ const entry = Object.assign({}, appEntry, pagesEntry);
 // });
 
 module.exports = {
-    entry: entry,
+    entry,
     target: require('mpvue-webpack-target'),
     output: {
         path: config.build.assetsRoot,
@@ -182,7 +182,8 @@ module.exports = {
             options: {
                 ts: {
                     appendTsSuffixTo: [/\.vue$/]
-                }
+                },
+                entry
             }
         })
     ]

@@ -78,7 +78,7 @@
         "lint-staged": "^6.1.1",
         "mpvue-loader": "^1.0.10",
         "mpvue-template-compiler": "^1.0.7",
-        "mpvue-ts-loader": "^1.0.2",
+        "mpvue-ts-loader": "^1.0.3",
         "mpvue-webpack-target": "^1.0.0",
         "opn": "^5.1.0",
         "optimize-css-assets-webpack-plugin": "^2.0.0",
