@@ -63,7 +63,13 @@ export default {
                 },
                 {
                     pagePath: 'pages/sample/sample',
-                    text: '我的',
+                    text: '示例1',
+                    iconPath: 'static/images/uc.png',
+                    selectedIconPath: 'static/images/uc-active.png'
+                },
+                {
+                    pagePath: 'pages/sample2/sample2',
+                    text: '示例2',
                     iconPath: 'static/images/uc.png',
                     selectedIconPath: 'static/images/uc-active.png'
                 }

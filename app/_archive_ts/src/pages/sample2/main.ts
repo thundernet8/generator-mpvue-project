@@ -9,7 +9,7 @@ export default {
     config: {
         backgroundTextStyle: 'black',
         navigationBarBackgroundColor: '#ffffff',
-        navigationBarTitleText: '示例页面',
+        navigationBarTitleText: '示例页面2',
         navigationBarTextStyle: 'black'
     }
 };
