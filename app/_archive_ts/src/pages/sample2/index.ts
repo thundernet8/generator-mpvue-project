@@ -10,7 +10,8 @@ import board from '@/components/board.vue';
 })
 export default class Sample2 extends Vue {
     // 私有属性方式指定data元素
-    data1: string = '';
+    title: string = '示例页面2';
+    content: string = '使用TypeScript+Vue Class组件写法';
 
     // get 方法指定computed的元素
     get computed1() {

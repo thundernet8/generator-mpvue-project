@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section class="section main-container">
-      <board :title="示例页面2" :content="使用TypeScript+Vue Class组件写法" />
+      <board :title="title" :content="content" />
     </section>
     <section class="placeholder-container"/>
   </div>
