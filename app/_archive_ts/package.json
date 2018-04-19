@@ -20,9 +20,8 @@
             "cross-env NODE_ENV=development webpack --hide-modules --config build/webpack.dll.conf.js",
         "dll:report":
             "cross-env npm_config_report=true NODE_ENV=production webpack --hide-modules --config build/webpack.dll.conf.js",
-        "dev": "npm run dll:dev && node build/dev-server.js",
-        "dev:mock":
-            "npm run dll:dev && cross-env MOCK=true node build/dev-server.js",
+        "dev": "node build/dev-server.js",
+        "dev:mock": "cross-env MOCK=true node build/dev-server.js",
         "start": "npm run dll:dev && node build/dev-server.js",
         "build": " rimraf dist && npm run dll && node build/build.js",
         "build:report":
