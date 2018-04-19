@@ -1,4 +1,4 @@
-import { VuexStore } from 'common-mpvue';
+import { VuexStore } from '@gfe/wxapp-common-vue';
 
 export default (function() {
     let store: VuexStore<any> = null as any;

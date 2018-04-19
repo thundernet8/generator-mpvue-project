@@ -18,12 +18,12 @@ module.exports = {
         dll: [
             'mpvue',
             'vuex',
-            'common-mpvue',
+            '@gfe/wxapp-common-vue',
             'querystring',
             'url-parse',
             'md5',
-            'left-pad',
-            'date-fns'
+            'left-pad'
+            // 'date-fns'
         ]
     },
     output: {

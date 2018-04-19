@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { wx, getApp } from 'common-mpvue';
+import { wx, getApp } from '@gfe/wxapp-common-vue';
 
 export default {
     name: 'Webview',

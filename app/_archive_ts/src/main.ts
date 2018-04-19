@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import App from './App.vue';
-import { wrap, wx } from 'common-mpvue';
+import { wrap, wx } from '@gfe/wxapp-common-vue';
 import config from './config';
 import appProps from './common/app';
 

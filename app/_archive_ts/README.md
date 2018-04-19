@@ -18,6 +18,6 @@ npm run dev:mock
 npm run build
 ```
 
-## common-mpvue
+## @gfe/wxapp-common-vue
 
-[common-mpvue](https://github.com/thundernet8/common-mpvue)
+[@gfe/wxapp-common-vue](http://git.dianpingoa.com/v2/sh/projects/~WUXUEQIAN/repos/wxapp-common/browse)

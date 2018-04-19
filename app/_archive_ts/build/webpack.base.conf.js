@@ -80,7 +80,7 @@ module.exports = {
                 include: [
                     resolve('src'),
                     resolve('test'),
-                    resolve('node_modules/common-mpvue')
+                    resolve('node_modules/@gfe/wxapp-common-vue')
                 ],
                 use: [
                     {
@@ -120,7 +120,7 @@ module.exports = {
                 include: [
                     resolve('src'),
                     resolve('test'),
-                    resolve('node_modules/common-mpvue')
+                    resolve('node_modules/@gfe/wxapp-common-vue')
                 ],
                 use: [
                     'babel-loader',

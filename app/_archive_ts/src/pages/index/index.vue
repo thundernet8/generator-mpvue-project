@@ -16,7 +16,7 @@
 import { exampleRequest } from '@/api/home';
 import createStore from '@/store/main';
 import board from '@/components/board.vue';
-import { getApp } from 'common-mpvue';
+import { getApp } from '@gfe/wxapp-common-vue';
 
 const store = createStore();
 

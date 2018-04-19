@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "@types/node": "^9.6.2",
-        "common-mpvue": "latest",
+        "@gfe/wxapp-common-vue": "latest",
         "date-fns": "^1.29.0",
         "left-pad": "^1.2.0",
         "md5": "^2.2.1",

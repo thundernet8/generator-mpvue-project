@@ -1,4 +1,4 @@
-import { wx } from 'common-mpvue';
+import { wx } from '@gfe/wxapp-common-vue';
 
 const httpRequest = wx.httpRequest
     .auth()

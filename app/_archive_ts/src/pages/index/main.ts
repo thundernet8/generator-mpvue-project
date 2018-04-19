@@ -1,5 +1,5 @@
 import Page from './index.vue';
-import { WrapPage } from 'common-mpvue';
+import { WrapPage } from '@gfe/wxapp-common-vue';
 
 /* tslint:disable */
 new WrapPage(Page, {

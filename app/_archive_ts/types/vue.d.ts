@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import App from 'common-mpvue/types/app';
-import { VuexStore } from 'common-mpvue/types/internal';
+import App from '@gfe/wxapp-common-vue/types/app';
+import { VuexStore } from '@gfe/wxapp-common-vue/types/internal';
 import { Store } from 'vuex/types';
 
 interface TabItem {
