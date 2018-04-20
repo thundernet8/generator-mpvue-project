@@ -4,6 +4,8 @@ A yeoman generator of helping to init your mpvue project
 
 基于 mpvue 开发小程序项目的脚手架
 
+可直接进[ts-example](ts-example)目录查看生成的项目示例
+
 *   [x] 支持 JS/TS 工程选项，TS 时提供 Typing 智能感知，更好的类型提示
 *   [x] 支持 API mock 功能，开发时可选使用本地 JSON mock 数据或单独的 API 服务器数据
 *   [x] 提供通用能力抽象，如 request 库，promisify 话的 wx API，token 以及业务数据持久化的 Store，emitter 跨页面通信等用户只专心写 pages 即可
