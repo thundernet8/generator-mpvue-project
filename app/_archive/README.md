@@ -18,6 +18,12 @@ npm run dev:mock
 npm run build
 ```
 
+快速添加新页面
+
+```js
+npm run newpage
+```
+
 ## common-mpvue
 
 [common-mpvue](https://github.com/thundernet8/common-mpvue)

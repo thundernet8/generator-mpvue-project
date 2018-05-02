@@ -25,7 +25,8 @@
         "start": "npm run dll:dev && node build/dev-server.js",
         "build": " rimraf dist && npm run dll && node build/build.js",
         "build:report":
-            "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js"
+            "rimraf dist && npm run dll && cross-env npm_config_report=true node build/build.js",
+        "newpage": "node build/genPage.js"
     },
     "dependencies": {
         "@types/node": "^9.6.2",
@@ -33,7 +34,7 @@
         "date-fns": "^1.29.0",
         "left-pad": "^1.2.0",
         "md5": "^2.2.1",
-        "mpvue": "^1.0.9",
+        "mpvue": "^1.0.10",
         "querystring": "^0.2.0",
         "url-parse": "^1.2.0",
         "vue-property-decorator": "^6.0.0",
@@ -76,9 +77,9 @@
         "less": "^3.0.1",
         "less-loader": "^4.1.0",
         "lint-staged": "^6.1.1",
-        "mpvue-loader": "^1.0.10",
-        "mpvue-template-compiler": "^1.0.9",
-        "mpvue-ts-loader": "^1.0.5",
+        "mpvue-loader": "^1.0.13",
+        "mpvue-template-compiler": "^1.0.10",
+        "mpvue-ts-loader": "^1.0.13",
         "mpvue-webpack-target": "^1.0.0",
         "opn": "^5.1.0",
         "optimize-css-assets-webpack-plugin": "^2.0.0",
