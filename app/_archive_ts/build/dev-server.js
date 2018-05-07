@@ -6,11 +6,13 @@ if (!process.env.NODE_ENV) {
 }
 
 // var opn = require('opn')
+var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var proxyMiddleware = require('http-proxy-middleware');
-var webpackConfig = require('./webpack.dev.conf');
+// var webpackConfig = require('./webpack.dev.conf');
+var dllWebpackConfig = require('./webpack.dll.conf');
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port;
@@ -30,16 +32,21 @@ var app = express();
 
 // 检验dll-dev.js是否编译，否则尝试编译
 function dll() {
-    const dllPath = path.resolve(webpackConfig.output.path, 'dll-dev.js');
-    if (fs.existsSync(dllPath)) {
-        const stats = fs.statSync(dllPath);
-        const now = new Date();
-        const modifyTime = new Date(stats.mtime);
-        if (now - modifyTime < 600 * 1000) {
-            // 10min内新鲜的dll-dev.js不再更新
-            return Promise.resolve(true);
+    const dllFolder = path.resolve(__dirname, '../.dll');
+    if (fs.existsSync(dllFolder)) {
+        const webpackConfig = require('./webpack.dev.conf');
+        const dllPath = path.resolve(webpackConfig.output.path, 'dll-dev.js');
+        if (fs.existsSync(dllPath)) {
+            const stats = fs.statSync(dllPath);
+            const now = new Date();
+            const modifyTime = new Date(stats.mtime);
+            if (now - modifyTime < 600 * 1000) {
+                // 10min内新鲜的dll-dev.js不再更新
+                return Promise.resolve(true);
+            }
         }
     }
+
     // 超过10min未更新或不存在重新编译
     return new Promise((resolve, reject) => {
         webpack(dllWebpackConfig, (err, stats) => {
@@ -62,7 +69,8 @@ function dll() {
 }
 
 function dev() {
-    var compiler = webpack(webpackConfig);
+    const webpackConfig = require('./webpack.dev.conf');
+    const compiler = webpack(webpackConfig);
 
     // var devMiddleware = require('webpack-dev-middleware')(compiler, {
     //   publicPath: webpackConfig.output.publicPath,
