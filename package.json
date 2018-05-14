@@ -1,6 +1,6 @@
 {
     "name": "generator-mpvue-project",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "description": "Yeoman generator of mpvue project",
     "main": "index.js",
     "repository": "git@github.com:thundernet8/generator-mpvue-project.git",
