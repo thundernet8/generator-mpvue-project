@@ -3,7 +3,7 @@ import { Component } from 'vue-property-decorator';
 import App from './App.vue';
 import { wrap, wx } from 'common-mpvue';
 import config from './config';
-import appProps from './common/app';
+import appProps from './common/_app';
 
 const pkg = require('../package.json');
 

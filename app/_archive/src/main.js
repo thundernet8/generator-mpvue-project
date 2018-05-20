@@ -3,7 +3,7 @@ import App from './App';
 import { wrap } from 'common-mpvue';
 import config from './config';
 import pkg from '../package.json';
-import appProps from './common/app';
+import appProps from './common/_app';
 
 // 设置wx debug模式
 if (process.env.NODE_ENV !== 'production') {
