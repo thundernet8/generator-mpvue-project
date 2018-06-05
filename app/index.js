@@ -29,9 +29,9 @@ module.exports = class extends Generator {
 
         // user options
         this.userOptions = {
-            yarn: 'Y',
-            ts: 'Y',
-            appid: ''
+            yarn: 'n',
+            ts: 'n',
+            appid: 'touristappid'
         };
         this.hasError = false;
     }
