@@ -30,6 +30,8 @@ var mock = require('./mock');
 
 var app = express();
 
+var depManager = require('./dep');
+
 // 检验dll-dev.js是否编译，否则尝试编译
 function dll() {
     const dllFolder = path.resolve(__dirname, '../.dll');
@@ -121,8 +123,10 @@ function dev() {
     var uri = 'http://localhost:' + port;
 
     var _resolve;
-    var readyPromise = new Promise(resolve => {
+    var _reject;
+    var readyPromise = new Promise((resolve, reject) => {
         _resolve = resolve;
+        _reject = reject;
     });
 
     // console.log('> Starting dev server...')
@@ -173,12 +177,22 @@ function dev() {
                 }
             }
         });
+
+        if (err) {
+            _reject(err);
+        } else {
+            _resolve();
+        }
     });
 
     return readyPromise;
 }
 
-var readyPromise = dll().then(() => dev());
+var readyPromise = dll()
+    .then(() => dev())
+    .then(() => {
+        depManager.scanDeps();
+    });
 
 module.exports = {
     ready: readyPromise,
