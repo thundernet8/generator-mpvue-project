@@ -11,6 +11,10 @@ A yeoman generator of helping to init your mpvue project
 *   [x] 提供通用能力抽象，如 request 库，promisify 话的 wx API，token 以及业务数据持久化的 Store，emitter 跨页面通信等用户只专心写 pages 即可
 *   [x] 集成众多的工程开发最佳实践: eslint/tslint 代码检查 prettier 代码格式化 lintstaged 和 pre-commit 做 git 钩子完成上述任务
 
+** 原生组件依赖解析支持 **
+
+在 main.js 中通过`usingComponent`指定原生方式编写的小程序组件 NPM 包名，构建时会自动解析组件包，以及组件包的依赖
+
 ## Screenshots
 
 ![Screenshot1](screenshot/screenshot1.png)
