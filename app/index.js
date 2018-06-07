@@ -107,19 +107,19 @@ module.exports = class extends Generator {
                     ts: {
                         description: chalk.white.bold('use typescript(Y/n)'),
                         type: 'string',
-                        default: 'Y',
+                        default: 'n',
                         required: false
                     },
                     yarn: {
                         description: chalk.white.bold('use yarn(Y/n)'),
                         type: 'string',
-                        default: 'Y',
+                        default: 'n',
                         required: false
                     },
                     appid: {
                         description: chalk.white.bold('miniprogram appid'),
                         type: 'string',
-                        default: '',
+                        default: 'touristappid',
                         required: false
                     }
                 }
