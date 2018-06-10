@@ -101,7 +101,8 @@
         "webpack-dev-middleware": "^1.10.0",
         "webpack-dev-middleware-hard-disk": "^1.10.0",
         "webpack-hot-middleware": "^2.18.0",
-        "webpack-merge": "^4.1.0"
+        "webpack-merge": "^4.1.0",
+        "webpack-mpvue-asset-plugin": "^0.0.2"
     },
     "engines": {
         "node": ">= 4.0.0",

@@ -6,6 +6,7 @@ var vueLoaderConfig = require('./vue-loader.conf');
 var webpack = require('webpack');
 var StringReplacePlugin = require('string-replace-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var MpvuePlugin = require('webpack-mpvue-asset-plugin');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
@@ -172,6 +173,7 @@ module.exports = {
                 from: path.resolve(__dirname, '../project.config.json'),
                 to: path.resolve(__dirname, '../dist')
             }
-        ])
+        ]),
+        new MpvuePlugin()
     ]
 };
