@@ -155,6 +155,7 @@ module.exports = class extends Generator {
     }
 
     unzipFiles() {
+        const self = this;
         const spinner = ora();
         spinner.start();
         spinner.text = chalk.white('Unarchive project files...');
@@ -181,7 +182,7 @@ module.exports = class extends Generator {
                 function(error) {
                     spinner.stop();
                     if (error) {
-                        this.hasError = true;
+                        self.hasError = true;
                         done(error);
                     } else {
                         done();
