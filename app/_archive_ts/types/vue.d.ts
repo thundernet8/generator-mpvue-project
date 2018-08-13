@@ -65,7 +65,7 @@ declare module 'vue/types/options' {
         /**
          * Common-mpvue添加的入口App.vue独有的声明周期，在此声明周期内小程序app已经实例化完成，而其他onShow mounted声明周期内app未实例化完成
          */
-        onLaunched();
+        onLaunched?();
     }
 }
 
